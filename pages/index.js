@@ -16,7 +16,7 @@ export default function Home() {
           >
             <div className="button black">
               <div className="icon">
-                <img src="/github.svg" alt="" />
+                <img src="https://yinzhuoei-static.oss-cn-beijing.aliyuncs.com/typecho/2022/03/github.svg" alt="" />
               </div>
               Github
             </div>

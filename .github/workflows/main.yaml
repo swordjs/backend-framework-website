@@ -20,9 +20,7 @@ jobs:
 
       # 生成静态文件
       - name: Build
-        run: npm install && npm run build
-        env:
-          BASE_PATH: "backend-framework-website"
+        run: npm install && npm run build && touch out/.nojekyll
 
       # 部署到 GitHub Pages
       - name: Deploy

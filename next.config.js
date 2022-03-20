@@ -1,32 +1,12 @@
-/** @type {import('next').NextConfig} */
+const debug = process.env.NODE_ENV !== "production";
 
-const isProd = process.env.NODE_ENV === "production";
-
-const nextConfig = {
-  reactStrictMode: true,
-  assetPrefix: getBasePath(),
-  basePath: getBasePath(),
-  webpack(webpackConfig) {
-    webpackConfig.output.publicPath =
-      getBasePath() + webpackConfig.output.publicPath; //资源生成前缀
-    return webpackConfig;
+module.exports = {
+  exportPathMap: function () {
+    return {
+      "/": { page: "/" },
+    };
   },
-
-  publicRuntimeConfig: {
-    basePath: getBasePath(), //写入路径
-  },
+  assetPrefix: !debug
+    ? "https://swordcodepractice.github.io/backend-framework-website/"
+    : "",
 };
-
-function getBasePath() {
-  var basePath = "";
-  if (isProd && process.env.BASE_PATH) {
-    if (process.env.BASE_PATH.startsWith("/")) {
-      basePath = process.env.BASE_PATH;
-    } else {
-      basePath = "/" + process.env.BASE_PATH;
-    }
-  }
-  return basePath;
-}
-
-module.exports = nextConfig;

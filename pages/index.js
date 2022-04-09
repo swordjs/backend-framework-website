@@ -1,6 +1,10 @@
 import { Prism } from "@mantine/prism";
 
 export default function Home() {
+const publicUrl = (url) => {
+  // 判断是否是生产环境
+  return `${process.env.NODE_ENV !== "production" ? url : `https://swordcodepractice.github.io/backend-framework-website${url}`}`;
+}
   const routeIndexCode = `
 
 // 当前路由是：POST http://localhost:3000/api/product/add
@@ -70,7 +74,7 @@ export const main = useApi<{
               width: "38%",
               height: "38%",
             }}
-            src="/video/type-check.mov"
+            src={publicUrl('/video/type-check.mov')}
             autoPlay="autoplay"
             loop="loop"
           ></video>
@@ -96,10 +100,10 @@ export const main = useApi<{
               alignItems: "center",
             }}
           >
-            <img style={{ marginLeft: "4vw" }} src="/esbuild.png"></img>
+            <img style={{ marginLeft: "4vw" }} src={publicUrl('/esbuild.png')}></img>
             <img
               style={{ width: "335px", height: "15%", marginLeft: "4vw" }}
-              src="/swc.png"
+              src={publicUrl('/swc.png')}
             ></img>
           </div>
           <div className="code-block" style={{ marginLeft: "4vw" }}>
@@ -164,19 +168,19 @@ export const main = useApi<{
           }}
         >
           <div>
-            <img src="/box.svg"></img>
+            <img src={publicUrl('/box.svg')}></img>
             <p style={{ textAlign: "center" }}>初始化工程</p>
           </div>
           <div>
-            <img src="/file.svg"></img>
+            <img src={publicUrl('/file.svg')}></img>
             <p style={{ textAlign: "center" }}>便捷符创建API组</p>
           </div>
           <div>
-            <img src="/tool.svg"></img>
+            <img src={publicUrl('/tool.svg')}></img>
             <p style={{ textAlign: "center" }}>编译多平台产物</p>
           </div>
           <div>
-            <img src="/code.svg"></img>
+            <img src={publicUrl('/code.svg')}></img>
             <p style={{ textAlign: "center" }}>IDE插件（期待搓手手）</p>
           </div>
         </div>

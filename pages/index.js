@@ -1,4 +1,5 @@
 import { Prism } from "@mantine/prism";
+import Head from 'next/head'
 
 export default function Home() {
 const publicUrl = (url) => {
@@ -28,6 +29,10 @@ export const main = useApi<{
 
   return (
     <div className="index">
+      <Head>
+        <title>SwordJS 是一个运行在Server和Serverless上的Nodejs框架</title>
+        <link rel="shortcut icon" href={publicUrl('/favicon.png')}/>
+      </Head>
       {/* 头部板块 */}
       <div className="header-block">
         {/* 标题 */}

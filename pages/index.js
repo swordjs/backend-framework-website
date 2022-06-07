@@ -16,10 +16,10 @@ import { ReqQuery, ReqParams, Res } from './proto';
 export const main = useApi<{
   query: ReqQuery;
   params: ReqParams;
-  res: Res;
+  res: Promise<Res>;
 }>({
   instruct: [POST()],
-  handler: (ctx) => {
+  handler: async (ctx) => {
     return {
       message: 'hello'
     };

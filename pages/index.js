@@ -1,16 +1,20 @@
 import { Prism } from "@mantine/prism";
-import Head from 'next/head'
+import Head from "next/head";
 
 export default function Home() {
-const publicUrl = (url) => {
-  // 判断是否是生产环境
-  return `${process.env.NODE_ENV !== "production" ? url : `https://swordjs.github.io/backend-framework-website${url}`}`;
-}
+  const publicUrl = (url) => {
+    // 判断是否是生产环境
+    return `${
+      process.env.NODE_ENV !== "production"
+        ? url
+        : `https://swordjs.github.io/backend-framework-website${url}`
+    }`;
+  };
   const routeIndexCode = `
 
 // 当前路由是：POST http://localhost:3000/api/product/add
 
-import { useApi, POST } from '@sword-code-practice/sword-framework';
+import { useApi, POST } from '@swordjs/sword-framework';
 import { ReqQuery, ReqParams, Res } from './proto';
 
 export const main = useApi<{
@@ -31,7 +35,7 @@ export const main = useApi<{
     <div className="index">
       <Head>
         <title>SwordJS 是一个运行在Server和Serverless上的Nodejs框架</title>
-        <link rel="shortcut icon" href={publicUrl('/favicon.png')}/>
+        <link rel="shortcut icon" href={publicUrl("/favicon.png")} />
       </Head>
       {/* 头部板块 */}
       <div className="header-block">
@@ -79,7 +83,7 @@ export const main = useApi<{
               width: "38%",
               height: "38%",
             }}
-            src={publicUrl('/video/type-check.mov')}
+            src={publicUrl("/video/type-check.mov")}
             autoPlay="autoplay"
             loop="loop"
           ></video>
@@ -91,38 +95,30 @@ export const main = useApi<{
         <div
           style={{
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "space-between",
             alignItems: "center",
+            width: "40vw",
+            margin: "0 auto",
             marginTop: "2vw",
           }}
         >
-          {/* 图片 */}
-          <div
-            className="images"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <img style={{ marginLeft: "4vw" }} src={publicUrl('/esbuild.png')}></img>
-            <img
-              style={{ width: "335px", height: "15%", marginLeft: "4vw" }}
-              src={publicUrl('/swc.png')}
-            ></img>
-          </div>
-          <div className="code-block" style={{ marginLeft: "4vw" }}>
+          <img
+            style={{ width: "14%" }}
+            src={publicUrl("/typescript.png")}
+          ></img>
+          <div className="code-block">
             <Prism colorScheme="dark" language="bash">
               {`
 > sword dev
 ℹ 启动入口文件: src/index.ts 
 ℹ 正在监听工程中的src/api文件夹... 
-✔ Proto加载成功
+✔ API.Schema加载成功
 2022-4-9 20:28:59 HTTP服务启动中...
 2022-4-9 20:28:59 程序运行在3000端口上
               `}
             </Prism>
           </div>
+          <img style={{ width: "18%" }} src={publicUrl("/esbuild.png")}></img>
         </div>
       </div>
       <div className="function-block">
@@ -161,6 +157,76 @@ export const main = useApi<{
         </div>
       </div>
       <div className="function-block function-block-black">
+        <div className="title">一键生成API文档</div>
+        <div className="desc">
+          不与业务耦合, 在Proto中写一段注释, 就可以生成Markdown & OpenAPI文档
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "2vw",
+          }}
+        >
+          <div className="code-block">
+            <Prism colorScheme="dark" language="typescript">
+              {`/**
+* 这是hello接口
+* 1
+*/
+
+export interface ReqParams {
+  
+}
+
+export interface ReqQuery {
+  /**
+  * id
+  * 编号
+  */
+  id: string,
+  /**
+  * nickname
+  * 昵称
+  */
+  nickname?: string,
+}
+
+/**
+* 返回的res是一个string
+* 这里不用返回其他信息
+*/
+export type Res = string;
+`}
+            </Prism>
+          </div>
+          <img
+            style={{ marginLeft: "2vw", width: "20%" }}
+            src={publicUrl("/doc.png")}
+          ></img>
+        </div>
+      </div>
+      <div className="function-block">
+        <div className="title">Hook API设计</div>
+        <div className="desc">
+          异步函数编程风格, 轻量级超低学习门槛, 让你快速开发云函数
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "2vw",
+          }}
+        >
+          <img
+            style={{ marginLeft: "2vw", width: "40%" }}
+            src={publicUrl("/hook.png")}
+          ></img>
+        </div>
+      </div>
+      <div className="function-block function-block-black">
         <div className="title">开箱即用的开发套件</div>
         <div className="desc">我们提供了一些开发套件，可以帮助我们快速开发</div>
         <div
@@ -173,28 +239,34 @@ export const main = useApi<{
           }}
         >
           <div>
-            <img src={publicUrl('/box.svg')}></img>
+            <img src={publicUrl("/box.svg")}></img>
             <p style={{ textAlign: "center" }}>初始化工程</p>
           </div>
           <div>
-            <img src={publicUrl('/file.svg')}></img>
+            <img src={publicUrl("/file.svg")}></img>
             <p style={{ textAlign: "center" }}>便捷符创建API组</p>
           </div>
           <div>
-            <img src={publicUrl('/tool.svg')}></img>
+            <img src={publicUrl("/tool.svg")}></img>
             <p style={{ textAlign: "center" }}>编译多平台产物</p>
           </div>
           <div>
-            <img src={publicUrl('/code.svg')}></img>
-            <p style={{ textAlign: "center" }}>IDE插件（期待搓手手）</p>
+            <img src={publicUrl("/code.svg")}></img>
+            <p style={{ textAlign: "center" }}>VSCODE插件</p>
           </div>
         </div>
       </div>
-      <div className="footer-shim" style={{height: "3vh"}}></div>
+      <div className="footer-shim" style={{ height: "3vh" }}></div>
       {/* 底部 */}
       <div className="footer">
-        <span>版权所有 © {new Date().getFullYear()}</span> 
-        <a style={{marginLeft: "10px"}} href="https://github.com/swordjs" target="__blank">swordjs剑指题解团队</a>
+        <span>版权所有 © {new Date().getFullYear()}</span>
+        <a
+          style={{ marginLeft: "10px" }}
+          href="https://github.com/swordjs"
+          target="__blank"
+        >
+          swordjs剑指题解团队
+        </a>
       </div>
     </div>
   );

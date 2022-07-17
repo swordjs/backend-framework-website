@@ -4,7 +4,7 @@ import Head from 'next/head'
 export default function Home() {
 const publicUrl = (url) => {
   // 判断是否是生产环境
-  return `${process.env.NODE_ENV !== "production" ? url : `https://swordcodepractice.github.io/backend-framework-website${url}`}`;
+  return `${process.env.NODE_ENV !== "production" ? url : `https://swordjs.github.io/backend-framework-website${url}`}`;
 }
   const routeIndexCode = `
 
@@ -42,7 +42,7 @@ export const main = useApi<{
         {/* button */}
         <div className="buttons">
           <a
-            href="https://github.com/swordCodePractice/backend-framework"
+            href="https://github.com/swordjs/backend-framework"
             target={"_blank"}
             rel="noreferrer"
           >
@@ -194,7 +194,7 @@ export const main = useApi<{
       {/* 底部 */}
       <div className="footer">
         <span>版权所有 © {new Date().getFullYear()}</span> 
-        <a style={{marginLeft: "10px"}} href="https://github.com/swordCodePractice" target="__blank">SwordCodePractice剑指题解团队</a>
+        <a style={{marginLeft: "10px"}} href="https://github.com/swordjs" target="__blank">swordjs剑指题解团队</a>
       </div>
     </div>
   );

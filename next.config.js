@@ -7,6 +7,6 @@ module.exports = {
     };
   },
   assetPrefix: !debug
-    ? "https://swordcodepractice.github.io/backend-framework-website/"
+    ? "https://swordjs.github.io/backend-framework-website/"
     : "",
 };
